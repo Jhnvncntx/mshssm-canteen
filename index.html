@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js" defer></script>
+    <link rel="icon" href="school-logo-removebg-preview.png" type="image/png">
+</head>
+
+<body>
+  <header>
+    <div class="iname">
+      DIGITAL
+    </div>
+    
+    <div class="logo">
+      <a href="website.html"><img src="school-logo.png"></a>
+    </div>
+    
+    <div class="iname">
+      CANTEEN
+    </div>
+  </header>
+  
+  <main>
+    <div class="loginContainer">
+        <div><h1>LOGIN</h1></div>
+          <div>
+            <div><h3>Customer Login</h3></div>
+            <div>
+              <form id="customerForm">
+              <label for="customerIdInput">Enter your 12-digit identifier:</label>
+              <br>
+              <input type="number" id="customerIdInput" minlength="11" maxlength="13" placeholder="123456789000" required />
+              <button type="submit">Login</button>
+              </form>
+            </div>
+        
+        <div><h3>Staff Login</h3></div>
+        <div>
+          <form id="staffForm">
+            <label for="staffIdInput">Enter your 10-digit identifier:</label>
+            <br>
+            <input type="number" id="staffIdInput" placeholder="123456789" minlength="5" maxlength="9" required />
+            <button type="submit">Login</button>
+          </form>
+        </div>
+    </div>
+  </main>
+  
+  <footer>
+    <div>
+      <a href="about.html">About Us</a>
+    </div>
+    
+    <div>
+      Cart
+    </div>
+  </footer>
+</body>

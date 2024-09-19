@@ -1,0 +1,108 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+header{
+  border: black 1px solid;
+  margin-bottom: auto;
+  height: 50px;
+  width: 100%;
+  background-color: #7f0708;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+header div{
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+header .iname{
+  font-size: 30px;
+  margin-top: 10px;
+  color: white;
+}
+
+header .logo img{
+  margin-top: 5px;
+  border: black 1px solid;
+  border-radius: 50%;
+  height: 80%;
+}
+
+main {
+  background-color: #d45c5d;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  height: 2500px;
+}
+
+.loginContainer {
+  width:80%;
+  height: 300px;
+  position: sticky;
+  top: 100px;
+  background-color: #fefbf4;
+  border: 1px black solid;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.loginContainer div h1 {
+  margin-top: 5px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: ;
+}
+.loginContainer div form {
+  background-color: ;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.loginContainer div form button {
+  background-color: lime;
+}
+
+footer{
+  border: black 1px solid;
+  margin-top: auto;
+  height: 50px;
+  width: 100%;
+  background-color: #7f0708;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+footer div{
+  border: black 1px solid;
+  border-radius: 3px;
+  background-color: #fefbf4;
+  color: black;
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  width: 80px;
+}

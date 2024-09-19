@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteen</title>
+    <link rel="stylesheet" href="website.css">
+    <script src="website.js" defer></script>
+    <link rel="icon" href="school-logo-removebg-preview.png" type="image/png">
+</head>
+
+<body>
+  <header>
+    <div class="iname">
+      DIGITAL
+    </div>
+    
+    <div class="logo">
+      <a href="website.html"><img src="school-logo.png"></a>
+    </div>
+    
+    <div class="iname">
+      CANTEEN
+    </div>
+  </header>
+  
+  <main>
+    <div>
+        <table>
+          <tr class="theading">
+            <th>Product</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+          
+          <tr>
+            <td class="product-name" id="productName1">Turon</td>
+            <td class="price" id="productPrice1">20</td>
+            <td>
+              <button class="orderBtns" id="product1">
+                Add to Cart
+                </button>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="product-name" id="productName2">Buko Juice</td>
+            <td class="price" id="productPrice2">15</td>
+            <td>
+              <button class="orderBtns" id="product2">
+                Add to Cart
+              </button>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="product-name" id="productName3">Siomai</td>
+            <td class="price" id="productPrice3">20</td>
+            <td>
+              <button class="orderBtns" id="product3">
+                Add to Cart
+              </button>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="product-name" id="productName4">Siomai Rice</td>
+            <td class="price" id="productPrice4">35</td>
+            <td>
+              <button class="orderBtns" id="product4">
+                Add to Cart
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="product-name" id="productName5">Cup Noodles</td>
+            <td class="price" id="productPrice5">25</td>
+            <td>
+              <button class="orderBtns" id="product5">
+                Add to Cart
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="product-name" id="productName6">Biscuits</td>
+            <td class="price" id="productPrice6">10</td>
+            <td>
+              <button class="orderBtns" id="product6">
+                Add to Cart
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Test</td>
+            <td>00</td>
+            <td>
+              <button class="orderBtns" id="product7">
+                Add to Cart
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Test</td>
+            <td>00</td>
+            <td>
+              <button class="orderBtns" id="product8">
+                Add to Cart
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Test</td>
+            <td>00</td>
+            <td>
+              <button class="orderBtns" id="product9">
+                Add to Cart
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Test</td>
+            <td>00</td>
+            <td>
+              <button class="orderBtns" id="product10">
+                Add to Cart
+              </button>
+            </td>
+          </tr>
+
+        </table>
+    </div>
+
+                    <!--CART SYSTEM-->
+
+    <div id="cartsys">
+      <h2>Cart</h2>
+      
+      <table id="cartTable">
+        <thead>
+          <tr>
+            <th>
+              Product
+            </th>
+
+            <th>
+              Price
+            </th>
+
+            <th>
+              Remove
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+                  <!--ALL ORDERS GOES HERE!-->
+        </tbody>
+      </table>
+
+      <h4 id="emptyCartText">Your oders goes here.</h4>
+      
+      <br>
+      <h2>Total: <span id="totalPrice">0</span></h2>
+      <button id="placeOrderBtn">
+        Place Order
+      </button>
+    </div>
+  </main>
+  
+  <footer>
+    <div>
+      <a href="about.html">About Us</a>
+    </div>
+    
+    <div>
+      Cart
+    </div>
+  </footer>
+
+  <div id="notification" class="notification">Added to Cart!</div>
+
+</body>
