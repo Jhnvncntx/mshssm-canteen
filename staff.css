@@ -1,0 +1,102 @@
+body{
+    background-color: #d45c5d;
+    margin: 0;
+    padding: 0;
+}
+  
+header{
+    border: black 1px solid;
+    margin-bottom: auto;
+    height: 50px;
+    width: 100%;
+    background-color: #7f0708;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+  
+header div{
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+}
+  
+header .iname{
+    font-size: 30px;
+    margin-top: 10px;
+    color: white;
+}
+  
+header .logo img{
+    margin-top: 5px;
+    border: black 1px solid;
+    border-radius: 50%;
+    height: 80%;
+}
+
+main {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main div {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 80%;
+    border-radius: 5px;
+    border: black 1px solid;
+}
+
+main div h1 {
+    font-size: 50px;
+    color: black;
+    border: black 1px solid;
+}
+
+main div table {
+    border: black 1px solid;
+    border: black 1px solid;
+    margin-bottom: 10px;
+}
+
+main div table tr:hover {
+    background-color: #f0f0f0; /* Light gray on hover */
+}
+
+main div table td {
+    padding: 10px; /* Add padding to table cells */
+}
+
+button {
+    background-color: #7f0708; /* Match header color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a21c1d; /* Darker shade on hover */
+}
+
+@media (max-width: 768px) {
+    main div {
+        width: 95%; /* Adjust width on smaller screens */
+    }
+
+    main div h1 {
+        font-size: 36px; /* Smaller font size for headings */
+    }
+}
