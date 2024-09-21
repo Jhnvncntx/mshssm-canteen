@@ -3,6 +3,10 @@ if (!token) {
     window.location.href = 'index.html'; // Redirect to login
 }
 
+// Get user name from localStorage
+const firstName = localStorage.getItem('firstName');
+const lastName = localStorage.getItem('lastName');
+
 const cart = [];
 const cartTable = document.getElementById('cartTable').getElementsByTagName('tbody')[0];
 const totalPriceElement = document.getElementById('totalPrice');
@@ -55,7 +59,9 @@ placeOrderBtn.addEventListener('click', async () => {
     }
 
     const order = {
-        customerId: localStorage.getItem('token'), // Get the actual customer ID
+        customerId: localStorage.getItem('token'), // Use the token as customer ID
+        firstName: firstName, // Add first name from localStorage
+        lastName: lastName,   // Add last name from localStorage
         items: cart.map(item => ({ item: item.name, quantity: item.quantity })),
         status: 'pending'
     };
