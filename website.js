@@ -1,3 +1,8 @@
+const token = localStorage.getItem('token');
+if (!token) {
+    window.location.href = 'login.html'; // Redirect to login if no token
+}
+
 const cart = [];
 const cartTable = document.getElementById('cartTable').getElementsByTagName('tbody')[0];
 const totalPriceElement = document.getElementById('totalPrice');
