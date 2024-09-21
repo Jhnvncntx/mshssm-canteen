@@ -64,19 +64,24 @@ placeOrderBtn.addEventListener('click', async () => {
             body: JSON.stringify(order),
         });
 
-        if (response.ok) {
-            const data = await response.json();
-            alert(`Order placed successfully! Order ID: ${data.order.orderId}`);
-            cart.length = 0; // Clear the cart
-            updateCartDisplay(); // Update the display
-        } else {
+        // Check response status and handle errors
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Error details:', errorData);
             alert('Failed to place order. Please try again.');
+            return;
         }
+
+        const data = await response.json();
+        alert(`Order placed successfully! Order ID: ${data.order.orderId}`);
+        cart.length = 0; // Clear the cart
+        updateCartDisplay(); // Update the display
     } catch (error) {
         console.error('Error:', error);
         alert('Error placing order. Please check the console for details.');
     }
 });
+
 
 // Remove item from cart functionality (optional)
 cartTable.addEventListener('click', (event) => {
