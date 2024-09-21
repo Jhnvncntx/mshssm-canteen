@@ -60,6 +60,8 @@ placeOrderBtn.addEventListener('click', async () => {
         status: 'pending'
     };
 
+    console.log('Order to be placed:', order); // Log the order to be placed
+
     try {
         const response = await fetch('https://mshssm-canteen.onrender.com/api/orders', {
             method: 'POST',
@@ -73,8 +75,8 @@ placeOrderBtn.addEventListener('click', async () => {
         // Check response status and handle errors
         if (!response.ok) {
             const errorData = await response.json();
-            console.error('Error details:', errorData);
-            alert('Failed to place order. Please try again.');
+            console.error('Error details:', errorData); // Log the error details
+            alert(`Failed to place order: ${errorData.error} - ${errorData.details}`);
             return;
         }
 
@@ -87,7 +89,6 @@ placeOrderBtn.addEventListener('click', async () => {
         alert('Error placing order. Please check the console for details.');
     }
 });
-
 
 // Remove item from cart functionality (optional)
 cartTable.addEventListener('click', (event) => {
