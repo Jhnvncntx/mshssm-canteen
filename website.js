@@ -56,7 +56,7 @@ placeOrderBtn.addEventListener('click', async () => {
     };
 
     try {
-        const response = await fetch('https://mshssm-canteen.onrender.com', {
+        const response = await fetch('https://mshssm-canteen.onrender.com/api/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
