@@ -55,7 +55,7 @@ placeOrderBtn.addEventListener('click', async () => {
     }
 
     const order = {
-        customerId: 'student123', // Replace with actual customer ID if applicable
+        customerId: localStorage.getItem('customerId'), // Get the actual customer ID
         items: cart.map(item => ({ item: item.name, quantity: item.quantity })),
         status: 'pending'
     };
@@ -65,6 +65,7 @@ placeOrderBtn.addEventListener('click', async () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // Include your JWT token
             },
             body: JSON.stringify(order),
         });
