@@ -55,7 +55,7 @@ placeOrderBtn.addEventListener('click', async () => {
     }
 
     const order = {
-        customerId: localStorage.getItem('customerId'), // Get the actual customer ID
+        customerId: localStorage.getItem('token'), // Get the actual customer ID
         items: cart.map(item => ({ item: item.name, quantity: item.quantity })),
         status: 'pending'
     };
