@@ -20,7 +20,8 @@ document.getElementById('registrationForm').addEventListener('submit', async (ev
 
         if (response.ok) {
             successDiv.innerText = 'Registration successful!';
-            // Redirect or clear the form as needed
+            setTimeout(() => {
+                window.location.href = 'website.html'}, 1000);
         } else {
             const errorMessage = await response.text();
             errorDiv.innerText = errorMessage; // Display error message
