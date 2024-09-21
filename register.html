@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="register.css">
+    <link rel="icon" href="school-logo-removebg-preview.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="iname">
+          DIGITAL
+        </div>
+        
+        <div class="logo">
+          <a href="website.html"><img src="school-logo.png"></a>
+        </div>
+        
+        <div class="iname"> 
+          CANTEEN
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Register to MSHS-SM Canteen</h1>
+            <form id="registrationForm">
+            <label for="lrn">Learning Number (LRN):</label>
+            <input type="text" id="lrn" name="lrn" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Register</button>
+            <div id="errorDiv" style="color: red;"></div>
+            <div id="successDiv" style="color: green;"></div>
+            </form>
+            
+        </div>
+    </main>
+
+    <footer>
+        <div>
+          <a href="about.html">About Us</a>
+        </div>
+        
+        <div>
+          Cart
+        </div>
+      </footer>
+
+    <script src="register.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
