@@ -19,6 +19,8 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
         if (response.ok) {
             const data = await response.json();
             localStorage.setItem('token', data.token); // Store JWT token in localStorage
+            localStorage.setItem('firstName', data.firstName); // Store first name in localStorage
+            localStorage.setItem('lastName', data.lastName); // Store last name in localStorage
             window.location.href = 'website.html'; // Redirect to the protected page
         } else {
             const errorMessage = await response.text();
