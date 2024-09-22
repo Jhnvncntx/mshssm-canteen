@@ -1,17 +1,18 @@
 document.getElementById('registrationForm').addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent form submission
 
-    const firstName = document.getElementById('firstName').value; // Get first name
-    const lastName = document.getElementById('lastName').value;   // Get last name
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
     const lrn = document.getElementById('lrn').value;
     const password = document.getElementById('password').value;
 
     const errorDiv = document.getElementById('errorDiv');
     const successDiv = document.getElementById('successDiv');
-    const loadingDiv = document.getElementById('loadingDiv'); // Loading indicator
+    const loadingDiv = document.getElementById('loadingDiv');
+    const submitButton = document.getElementById('submitButton'); // Ensure this is defined here
 
-    errorDiv.innerText = ''; // Clear previous errors
-    successDiv.innerText = ''; // Clear previous success messages
+    errorDiv.innerText = '';
+    successDiv.innerText = '';
 
     // Simple client-side validation
     if (!firstName || !lastName || !lrn || !password) {
@@ -20,9 +21,7 @@ document.getElementById('registrationForm').addEventListener('submit', async (ev
     }
 
     try {
-        // Disable the submit button to prevent multiple submissions
-        const submitButton = document.getElementById('submitButton');
-        submitButton.disabled = true;
+        submitButton.disabled = true; // Disable the submit button
         loadingDiv.style.display = 'block'; // Show loading indicator
 
         const response = await fetch('https://mshssm-canteen.onrender.com/api/register', {
@@ -30,7 +29,7 @@ document.getElementById('registrationForm').addEventListener('submit', async (ev
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ firstName, lastName, lrn, password }), // Include firstName and lastName in the body
+            body: JSON.stringify({ firstName, lastName, lrn, password }),
         });
 
         if (response.ok) {
@@ -38,18 +37,16 @@ document.getElementById('registrationForm').addEventListener('submit', async (ev
             setTimeout(() => {
                 window.location.href = 'website.html';
             }, 1000);
-            // Reset form fields
             document.getElementById('registrationForm').reset();
         } else {
             const errorMessage = await response.text();
-            errorDiv.innerText = errorMessage; // Display error message
+            errorDiv.innerText = errorMessage;
         }
     } catch (error) {
         console.error('Error during registration:', error);
         errorDiv.innerText = 'Failed to register. Please try again.';
     } finally {
-        // Re-enable the submit button and hide the loading indicator
-        submitButton.disabled = false;
+        submitButton.disabled = false; // Re-enable the submit button
         loadingDiv.style.display = 'none'; // Hide loading indicator
     }
 });
