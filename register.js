@@ -37,10 +37,10 @@ document.getElementById('registrationForm').addEventListener('submit', async (ev
             setTimeout(() => {
                 window.location.href = 'website.html';
             }, 1000);
-            document.getElementById('registrationForm').reset();
+            document.getElementById('registrationForm').reset(); // Clear the form
         } else {
             const errorMessage = await response.text();
-            errorDiv.innerText = errorMessage;
+            errorDiv.innerText = errorMessage; // Display error message
         }
     } catch (error) {
         console.error('Error during registration:', error);
