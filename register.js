@@ -30,5 +30,5 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         document.getElementById('message').textContent = 'Error: ' + error.message;
     }
 
-    console.log(firstName, lastName, lrn, password)
+    console.log(firstName, lastName, lrn, password);
 });
