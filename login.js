@@ -1,6 +1,10 @@
 document.getElementById('loginForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
+    // Show loading indicator
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('message').textContent = '';
+
     const lrn = document.getElementById('lrn').value;
     const password = document.getElementById('password').value;
     document.getElementById('message').textContent = '';
@@ -13,17 +17,20 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         });
 
         const result = await response.json();
+        document.getElementById('loading').style.display = 'none';
 
         if (response.ok) {
+            console.log('Login successful:', result);
+            document.getElementById('message').textContent = 'Login successful!';
             // Store the token (you can use localStorage, sessionStorage, or cookies)
             localStorage.setItem('token', result.token);
-            document.getElementById('message').textContent = 'Login successful!';
             // Optionally redirect to another page
             // window.location.href = 'homepage.html'; // Uncomment to redirect
         } else {
-            document.getElementById('message').textContent = 'Error: ' + result;
+            document.getElementById('message').textContent = 'Error: ' + result.error;
         }
     } catch (error) {
-        document.getElementById('message').textContent = 'Error: ' + error.message;
+        document.getElementById('loading').style.display = 'none'; // Hide loading indicator
+        document.getElementById('message').textContent = 'Error: ' + error.message; // Display error message
     }
 });
