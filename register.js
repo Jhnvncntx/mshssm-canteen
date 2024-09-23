@@ -21,9 +21,8 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         document.getElementById('loading').style.display = 'none';
 
         if (response.ok) {
+            document.getElementById('registerForm').reset();
             document.getElementById('message').textContent = 'Registration successful!';
-            // Optionally redirect to login or home page
-            // window.location.href = 'login.html'; // Uncomment to redirect
         } else {
             document.getElementById('message').textContent = 'Error: ' + result;
         }
