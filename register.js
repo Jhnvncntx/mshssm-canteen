@@ -29,4 +29,6 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         document.getElementById('loading').style.display = 'none';
         document.getElementById('message').textContent = 'Error: ' + error.message;
     }
+
+    console.log(firstName, lastName, lrn, password)
 });
