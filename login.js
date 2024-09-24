@@ -24,8 +24,8 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             document.getElementById('message').textContent = 'Login successful!';
             // Store the token (you can use localStorage, sessionStorage, or cookies)
             localStorage.setItem('token', result.token);
-            // Optionally redirect to another page
-            // window.location.href = 'homepage.html'; // Uncomment to redirect
+            // Redirect to order page
+            window.location.href = 'order.html';
         } else {
             document.getElementById('message').textContent = 'Error: ' + result.error;
         }
