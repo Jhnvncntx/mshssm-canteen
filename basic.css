@@ -54,10 +54,7 @@ main .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 10px;
+    padding: 15px;
     border-radius: 5px;
     margin-top: 50px;
     background-color: white;
