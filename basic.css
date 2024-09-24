@@ -101,7 +101,7 @@ button:hover {
 .header {
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 50px;
+/*     font-size: 50px; */
 }
 
 footer{
@@ -152,6 +152,6 @@ footer{
         width: 80%;
     }
     .header {
-        font-size: 20px;
+/*         font-size: 20px; */
     }
 }
