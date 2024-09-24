@@ -57,6 +57,7 @@ main .container {
     padding: 15px;
     border-radius: 5px;
     margin-top: 50px;
+    margin-bottom: 50px;
     background-color: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border: 0.8px solid black;
