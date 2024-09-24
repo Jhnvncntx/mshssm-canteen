@@ -62,3 +62,10 @@ p {
 p span {
     font-weight: bold;
 }
+
+@media (max-width: 1080px) {
+    #cart-container, #products-container {
+       width: 96%;
+					}
+    
+}
