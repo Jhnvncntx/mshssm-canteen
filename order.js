@@ -59,4 +59,77 @@ function removeFromCart(productId) {
     updateCart();
 }
 
-// Function to update cart display
+// Function to update cart display and total amount
+function updateCart() {
+    const cartItems = document.querySelector('#cart-items tbody');
+    const totalAmount = document.getElementById('total-amount');
+    cartItems.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>₱${item.price}</td>
+            <td>${item.quantity}</td>
+            <td><button onclick="removeFromCart('${item.productId}')">Remove</button></td> <!-- Use productId -->
+        `;
+        cartItems.appendChild(row);
+    });
+
+    totalAmount.innerText = `₱${total.toFixed(2)}`;
+}
+
+// Function to handle order placement
+document.getElementById('place-order').addEventListener('click', () => {
+    if (cart.length > 0) {
+        placeOrder();
+    } else {
+        alert("Your cart is empty!");
+    }
+});
+
+// Function to send order to the server
+function placeOrder() {
+    const firstName = localStorage.getItem('firstName');
+    const lastName = localStorage.getItem('lastName');
+    const token = localStorage.getItem('token');
+
+    const customerName = `${firstName} ${lastName}`;
+
+    fetch('https://mshssm-canteen.onrender.com/api/orders', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            items: cart.map(item => ({
+                productId: item.productId, // Make sure this matches what you have in the database
+                name: item.name,
+                price: item.price,
+                quantity: item.quantity
+            })),
+            totalAmount: cart.reduce((total, item) => total + item.price * item.quantity, 0)
+        }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert('Order placed successfully!');
+        cart = []; // Clear the cart after successful order
+        updateCart(); // Update the cart display
+    })
+    .catch(error => {
+        console.error('Error placing order:', error);
+        alert('Failed to place order. Please try again.');
+    });
+}
+
+// Initialize
+// fetchProducts(); // This line is not necessary here since it's already called above
