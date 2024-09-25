@@ -31,12 +31,17 @@ function displayProducts() {
 // Function to add items to cart
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
-    const cartItem = cart.find(item => item.id === productId);
+    const cartItem = cart.find(item => item.productId === productId); // Update this line to match the structure
 
     if (cartItem) {
         cartItem.quantity += 1;
     } else {
-        cart.push({ ...product, quantity: 1 });
+        cart.push({ 
+            productId: productId, // Assuming productId is the same as the product's id
+            name: product.name, 
+            price: product.price, 
+            quantity: 1 
+        });
     }
     updateCart();
 }
@@ -80,42 +85,45 @@ document.getElementById('place-order').addEventListener('click', () => {
 
 // Function to send order to the server
 function placeOrder() {
-    // Retrieve user's name and token from localStorage
     const firstName = localStorage.getItem('firstName');
     const lastName = localStorage.getItem('lastName');
     const token = localStorage.getItem('token');
 
-    // Create the customer name from first and last name
     const customerName = `${firstName} ${lastName}`;
 
     fetch('https://mshssm-canteen.onrender.com/api/orders', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` // Add the token in the headers
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            customerName, // Include customer name
             items: cart.map(item => ({
-                productId: item.id, // Assuming the product ID is the same as the item ID
+                productId: item.productId, // Make sure this matches what you have in the database
                 name: item.name,
                 price: item.price,
                 quantity: item.quantity
-            })), // Include cart items
-            totalAmount: cart.reduce((total, item) => total + item.price * item.quantity, 0) // Calculate total amount
+            })),
+            totalAmount: cart.reduce((total, item) => total + item.price * item.quantity, 0)
         }),
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
     .then(data => {
         alert('Order placed successfully!');
-        cart = []; // Clear the cart
-        updateCart(); // Update the cart display
+        cart = [];
+        updateCart();
     })
     .catch(error => {
         console.error('Error placing order:', error);
         alert('Failed to place order. Please try again.');
     });
 }
+
 
 // Initialize
 displayProducts();
