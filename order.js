@@ -96,7 +96,12 @@ function placeOrder() {
         },
         body: JSON.stringify({
             customerName, // Include customer name
-            items: cart, // Include cart items
+            items: cart.map(item => ({
+                productId: item.id, // Assuming the product ID is the same as the item ID
+                name: item.name,
+                price: item.price,
+                quantity: item.quantity
+            })), // Include cart items
             totalAmount: cart.reduce((total, item) => total + item.price * item.quantity, 0) // Calculate total amount
         }),
     })
