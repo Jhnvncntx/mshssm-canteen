@@ -7,7 +7,6 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
     const lrn = document.getElementById('lrn').value;
     const password = document.getElementById('password').value;
-    document.getElementById('message').textContent = '';
 
     try {
         const response = await fetch('https://mshssm-canteen.onrender.com/api/login', {
@@ -22,8 +21,12 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         if (response.ok) {
             console.log('Login successful:', result);
             document.getElementById('message').textContent = 'Login successful!';
-            // Store the token (you can use localStorage, sessionStorage, or cookies)
+            
+            // Store the token and user information
             localStorage.setItem('token', result.token);
+            localStorage.setItem('firstName', result.firstName); // Store first name
+            localStorage.setItem('lastName', result.lastName);   // Store last name
+
             // Redirect to order page
             window.location.href = 'order.html';
         } else {
