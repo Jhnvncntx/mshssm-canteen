@@ -80,12 +80,25 @@ document.getElementById('place-order').addEventListener('click', () => {
 
 // Function to send order to the server
 function placeOrder() {
+    // Retrieve user's name and token from localStorage
+    const firstName = localStorage.getItem('firstName');
+    const lastName = localStorage.getItem('lastName');
+    const token = localStorage.getItem('token');
+
+    // Create the customer name from first and last name
+    const customerName = `${firstName} ${lastName}`;
+
     fetch('https://mshssm-canteen.onrender.com/api/orders', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` // Add the token in the headers
         },
-        body: JSON.stringify(cart),
+        body: JSON.stringify({
+            customerName, // Include customer name
+            items: cart, // Include cart items
+            totalAmount: cart.reduce((total, item) => total + item.price * item.quantity, 0) // Calculate total amount
+        }),
     })
     .then(response => response.json())
     .then(data => {
