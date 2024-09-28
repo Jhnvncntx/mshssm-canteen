@@ -1,0 +1,158 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d45c5d;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    border: black 1px solid;
+    margin-bottom: auto;
+    height: 50px;
+    width: 100%;
+    background-color: #7f0708;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+header div{
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+header .iname{
+    font-size: 30px;
+    margin-top: 10px;
+    color: white;
+}
+
+header .logo img{
+    margin-top: 5px;
+    border: black 1px solid;
+    border-radius: 50%;
+    height: 80%;
+}
+
+
+main {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 0.8px solid black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+input {
+    font-size: 20px;
+    align-self: flex-end;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+label:first-child {
+    margin-top: 15px;
+}
+
+button {
+    background-color: #7f0708;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #a21c1d;
+}
+
+.header {
+    margin-top: 10px;
+    margin-bottom: 10px;
+/*     font-size: 50px; */
+}
+
+footer{
+    border: black 1px solid;
+    margin-top: auto;
+    height: 50px;
+    width: 100%;
+    background-color: #7f0708;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  footer div{
+    padding: 3px;
+    text-align: center;
+    font-size: 20px;
+    border: black 1px solid;
+    border-radius: 3px;
+    background-color: #fefbf4;
+    color: black;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    width: 80px;
+  }
+
+  footer div:hover {
+    background-color: gray;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: white;
+  }
+
+@media (max-width: 600px) {
+    main .container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 98%;
+        padding: 0;
+    }
+}

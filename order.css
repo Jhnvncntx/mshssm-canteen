@@ -1,0 +1,108 @@
+h1 {
+    align-self: center;
+}
+
+#products-container, #cart-container {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+#products-container {
+    border-radius: 5px;
+    border: black 0.5px, solid;
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.product button {
+    margin-top: 10px;
+}
+
+.product p {
+    font-size: 20px;
+}
+
+table {
+    width: 98%;
+    border-collapse: collapse;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+p {
+    align-self: center;
+}
+
+p span {
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    table td {
+        font-size: 20px;
+        padding: 5px;
+    }
+
+    table {
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    
+    th:nth-child(3) {
+        width: 30px;
+
+    }
+
+    th:nth-child(4) {
+        width: 30px;
+
+    }
+
+    #products-container {
+        width: 90%;
+    }
+
+    #products-container h1 {
+        font-size: 25px;
+    }
+
+    #cart-container {
+        padding: 0;
+        width: 90%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #cart-container table {
+        width: 100%;
+        font-size: 15px;
+        margin: 0;
+    }    
+    
+}
