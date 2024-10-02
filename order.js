@@ -99,20 +99,10 @@ document.getElementById('place-order').addEventListener('click', () => {
     }
 });
 
-// Function to check if token is expired
-const token = localStorage.getItem('token');
-
-function isTokenExpired(token) {
-    if (!token) return true; // If no token, consider it expired
-
-    const payload = JSON.parse(atob(token.split('.')[1])); // Decode the JWT payload
-    const exp = payload.exp * 1000; // Convert expiration time to milliseconds
-    return Date.now() >= exp; // Check if current time is greater than expiration time
-}
-
 // Function to send order to the server
 function placeOrder() {
-    
+    const token = localStorage.getItem('token'); // Get the token again here
+
     if (isTokenExpired(token)) {
         alert('Your session has expired. Please log in again.');
         window.location.href = 'login.html'; // Redirect to login page
@@ -121,7 +111,6 @@ function placeOrder() {
     
     const firstName = localStorage.getItem('firstName');
     const lastName = localStorage.getItem('lastName');
-    const token = localStorage.getItem('token');
 
     const customerName = `${firstName} ${lastName}`;
 
