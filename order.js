@@ -106,7 +106,7 @@ function placeOrder() {
         },
         body: JSON.stringify({
             items: cart.map(item => ({
-                productId: item.productId, // Make sure this matches what you have in the database
+                productId: item.productId,
                 name: item.name,
                 price: item.price,
                 quantity: item.quantity
@@ -121,7 +121,7 @@ function placeOrder() {
         return response.json();
     })
     .then(data => {
-        alert('Order placed successfully!');
+        alert(`Order placed successfully! Your order ID is: ${data.order.orderId}`);
         cart = []; // Clear the cart after successful order
         updateCart(); // Update the cart display
     })
