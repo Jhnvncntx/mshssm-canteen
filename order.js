@@ -105,7 +105,7 @@ function placeOrder() {
 
     if (isTokenExpired(token)) {
         alert('Your session has expired. Please log in again.');
-        window.location.href = 'login.html'; // Redirect to login page
+        window.location.href = 'index.html'; // Redirect to login page
         return; // Stop further execution
     }   
     
