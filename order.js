@@ -92,6 +92,15 @@ document.getElementById('place-order').addEventListener('click', () => {
 
 // Function to send order to the server
 function placeOrder() {
+
+     const token = localStorage.getItem('token');
+
+    if (isTokenExpired(token)) {
+        alert('Your session has expired. Please log in again.');
+        window.location.href = 'login.html'; // Redirect to login page
+        return; // Stop further execution
+    }   
+    
     const firstName = localStorage.getItem('firstName');
     const lastName = localStorage.getItem('lastName');
     const token = localStorage.getItem('token');
