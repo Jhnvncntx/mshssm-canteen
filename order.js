@@ -99,6 +99,15 @@ document.getElementById('place-order').addEventListener('click', () => {
     }
 });
 
+// Function to check if token is expired
+function isTokenExpired(token) {
+    if (!token) return true; // If no token, consider it expired
+
+    const payload = JSON.parse(atob(token.split('.')[1])); // Decode the JWT payload
+    const exp = payload.exp * 1000; // Convert expiration time to milliseconds
+    return Date.now() >= exp; // Check if current time is greater than expiration time
+}
+
 // Function to send order to the server
 function placeOrder() {
 
