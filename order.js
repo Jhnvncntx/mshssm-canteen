@@ -105,9 +105,11 @@ function placeOrder() {
 
     if (isTokenExpired(token)) {
         alert('Your session has expired. Please log in again.');
-        window.location.href = 'index.html'; // Redirect to login page
+        setTimeout(() => {
+            window.location.href = 'index.html'; // Redirect to login page after 3 seconds
+        }, 3000); // Delay for 3000 milliseconds (3 seconds)
         return; // Stop further execution
-    }   
+    }
     
     const firstName = localStorage.getItem('firstName');
     const lastName = localStorage.getItem('lastName');
