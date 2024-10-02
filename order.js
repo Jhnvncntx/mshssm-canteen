@@ -100,6 +100,8 @@ document.getElementById('place-order').addEventListener('click', () => {
 });
 
 // Function to check if token is expired
+const token = localStorage.getItem('token');
+
 function isTokenExpired(token) {
     if (!token) return true; // If no token, consider it expired
 
@@ -110,9 +112,7 @@ function isTokenExpired(token) {
 
 // Function to send order to the server
 function placeOrder() {
-
-     const token = localStorage.getItem('token');
-
+    
     if (isTokenExpired(token)) {
         alert('Your session has expired. Please log in again.');
         window.location.href = 'login.html'; // Redirect to login page
