@@ -105,9 +105,7 @@ function placeOrder() {
 
     if (isTokenExpired(token)) {
         alert('Your session has expired. Please log in again.');
-        setTimeout(() => {
-            window.location.href = 'index.html'; // Redirect to login page after 3 seconds
-        }, 3000); // Delay for 3000 milliseconds (3 seconds)
+        window.location.href = 'index.html';
         return; // Stop further execution
     }
     
