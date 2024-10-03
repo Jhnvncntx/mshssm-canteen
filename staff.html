@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff</title>
+    <link rel="icon" href="school-logo-removebg-preview.png" type="image/png">
+    <link rel="stylesheet" href="basic.css">
+    <link rel="stylesheet" href="staff.css">
+</head>
+<body>
+    <header>
+      <div class="iname">
+        DIGITAL
+      </div>
+  
+      <div class="logo">
+        <a href="website.html"><img src="school-logo.png"></a>
+      </div>
+  
+      <div class="iname">
+        CANTEEN
+      </div>
+    </header>
+    
+    <main>
+        <h1 id="pending" class="nav"></h1>
+        
+            <div id="pendingContainer" class="order-container">
+              <h2>Pending Orders</h2>
+              <ul id="pendingOrders"></ul>
+            </div>
+
+        <h1 id="ready" class="nav"></h1>  
+        
+            <div id="readyContainer" class="order-container">
+              <h2>Ready Orders</h2>
+              <ul id="readyOrders"></ul>
+            </div>
+
+        <h1 id="claimed" class="nav"></h1>
+
+            <div id="claimedContainer" class="order-container">
+              <h2>Claimed Orders</h2>
+              <ul id="claimedOrders"></ul>
+            </div>
+    </main>
+    
+    <footer>
+    <div>
+        <a href='#pending'>Pending</a>
+    </div>
+    <div>
+        <a href="#ready">Ready</a>
+    </div>
+    <div>
+        <a href="#claimed">Claimed</a>
+    </div>
+    <div>
+        <a href="login.html">Logout</a>
+    </div>
+  </footer> 
+    <script src="staff.js"></script>
+</body>
+</html>
