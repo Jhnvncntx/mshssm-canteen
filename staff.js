@@ -37,13 +37,13 @@ function displayOrders(orders) {
         const orderElement = document.createElement('div');
         orderElement.className = 'orders';
         orderElement.innerHTML = `
-            <div>
+            <div class='orderId'>
                 Order: ${order.orderId}
             </div>
-            <div>
+            <div class='customerName'>
                 Name: ${order.customerName}
             </div>
-            <div>
+            <div class='totalAmount'>
                 Total: ${order.totalAmount}
             </div>
         `;
@@ -52,7 +52,7 @@ function displayOrders(orders) {
         order.items.forEach(item => {
             const itemElement = document.createElement('li');
             itemElement.className = 'itemElement';
-            itemElement.innerHTML = `<div>Product: ${item.name}</div><br><div>Quantity: ${item.quantity}<br></div>`;
+            itemElement.innerHTML = `<div class='item'><div>Product: ${item.name}</div><div>Quantity: ${item.quantity}</div></div>`;
             itemList.appendChild(itemElement);
         });
 
