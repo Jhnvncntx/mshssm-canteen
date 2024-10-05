@@ -45,7 +45,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: rgba( 255, 255, 255, 0.5);
-    height: 620px;
+    height: 570px;
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -142,7 +142,7 @@ p span {
 #cart-container .body {
     border-radius: 0;
     border-bottom: none;
-    height: 540px;
+    height: 490px;
 }
 
 .footer {
