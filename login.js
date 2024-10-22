@@ -5,14 +5,15 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     document.getElementById('loading').style.display = 'block';
     document.getElementById('message').textContent = '';
 
+    const userType = document.querySelector('input[name="userType"]:checked').value; // Get user type
     const lrn = document.getElementById('lrn').value;
     const password = document.getElementById('password').value;
 
     try {
-        const response = await fetch('https://mshssm-canteen.onrender.com/api/login', {
+        const response = await fetch(`https://mshssm-canteen.onrender.com/api/${userType}/login`, { // Use user type in URL
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ lrn, password })
+            body: JSON.stringify(userType === 'customers' ? { lrn, password } : { mobileNumber: lrn, password }) // Adjust body based on user type
         });
 
         const result = await response.json();
@@ -21,7 +22,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         if (response.ok) {
             console.log('Login successful:', result);
             document.getElementById('message').textContent = 'Login successful!';
-            
+
             // Store the token and user information
             localStorage.setItem('token', result.token);
             localStorage.setItem('firstName', result.firstName); // Store first name
