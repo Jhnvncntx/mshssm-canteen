@@ -26,22 +26,25 @@
 
         <div class="container">
           <h1 class="header">Login</h1>
-          <form id="loginForm">
-            <div>
-            <label>
-                <input type="radio" name="userType" value="customer" checked> Customer
-            </label>
-            <label>
-                <input type="radio" name="userType" value="staff"> Staff
-            </label>              
-            </div>
 
-            <input type="text" id="lrn" placeholder="LRN / Mobile Number" required>
-            <input type="password" id="password" placeholder="Password" required>
+          <!-- Customer Login Form -->
+          <form id="customerLoginForm">
+            <h2>Customer Login</h2>
+            <input type="text" id="customerLRN" placeholder="LRN" required>
+            <input type="password" id="customerPassword" placeholder="Password" required>
             <button type="submit">Login</button>
-            <div id="loading" style="display:none;">Loading...</div>
-            <div id="message"></div>
-          </form>      
+            <div id="customerMessage"></div>
+          </form>
+
+          <!-- Staff Login Form -->
+          <form id="staffLoginForm">
+            <h2>Staff Login</h2>
+            <input type="text" id="staffMobileNumber" placeholder="Mobile Number" required>
+            <input type="password" id="staffPassword" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <div id="staffMessage"></div>
+          </form> 
+                         
         </div>
     </main>
     
