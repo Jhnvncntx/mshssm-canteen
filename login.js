@@ -9,6 +9,9 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     const lrn = document.getElementById('lrn').value;
     const password = document.getElementById('password').value;
 
+    // Log the login attempt details
+    console.log('Logging in:', { userType, lrn, password });
+
     try {
         const response = await fetch(`https://mshssm-canteen.onrender.com/api/login/${userType}`, { // Use user type in URL
             method: 'POST',
@@ -16,8 +19,19 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             body: JSON.stringify(userType === 'customers' ? { lrn, password } : { mobileNumber: lrn, password }) // Adjust body based on user type
         });
 
-        const result = await response.json();
-        document.getElementById('loading').style.display = 'none';
+        let result;
+        try {
+            result = await response.json(); // Parse JSON response
+        } catch (error) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('message').textContent = 'Error parsing response: ' + error.message; // Display parsing error
+            return;
+        }
+
+        document.getElementById('loading').style.display = 'none'; // Hide loading indicator
+
+        // Log the response
+        console.log('Fetch result:', result);
 
         if (response.ok) {
             console.log('Login successful:', result);
@@ -31,7 +45,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             // Redirect to order page
             window.location.href = 'order.html';
         } else {
-            document.getElementById('message').textContent = 'Error: ' + result.error;
+            document.getElementById('message').textContent = 'Error: ' + result.error; // Display server error
         }
     } catch (error) {
         document.getElementById('loading').style.display = 'none'; // Hide loading indicator
