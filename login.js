@@ -10,7 +10,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     const password = document.getElementById('password').value;
 
     try {
-        const response = await fetch(`https://mshssm-canteen.onrender.com/api/${userType}/login`, { // Use user type in URL
+        const response = await fetch(`https://mshssm-canteen.onrender.com/api/login/${userType}`, { // Use user type in URL
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userType === 'customers' ? { lrn, password } : { mobileNumber: lrn, password }) // Adjust body based on user type
