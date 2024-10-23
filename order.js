@@ -101,14 +101,14 @@ document.getElementById('place-order').addEventListener('click', () => {
 
 // Function to send order to the server
 function placeOrder() {
-    const token = localStorage.getItem('token'); // Get the token again here
+    const token = localStorage.getItem('token');
 
     if (isTokenExpired(token)) {
         alert('Your session has expired. Please log in again.');
         window.location.href = 'index.html';
-        return; // Stop further execution
+        return;
     }
-    
+
     const firstName = localStorage.getItem('firstName');
     const lastName = localStorage.getItem('lastName');
 
@@ -127,7 +127,8 @@ function placeOrder() {
                 price: item.price,
                 quantity: item.quantity
             })),
-            totalAmount: cart.reduce((total, item) => total + item.price * item.quantity, 0)
+            totalAmount: cart.reduce((total, item) => total + item.price * item.quantity, 0),
+            customerName // Add customerName to the body
         }),
     })
     .then(response => {
@@ -138,8 +139,8 @@ function placeOrder() {
     })
     .then(data => {
         alert(`Order placed successfully! Your order ID is: ${data.order.orderId}`);
-        cart = []; // Clear the cart after successful order
-        updateCart(); // Update the cart display
+        cart = [];
+        updateCart();
     })
     .catch(error => {
         console.error('Error placing order:', error);
@@ -148,4 +149,3 @@ function placeOrder() {
 }
 
 // Initialize
-// fetchProducts(); // This line is not necessary here since it's already called above
