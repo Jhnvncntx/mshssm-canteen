@@ -1,59 +1,73 @@
-const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+// Customer Login
+document.getElementById('customerLoginForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
 
-const Customer = require('./customerSchema'); // Updated model name
-const Staff = require('./staffSchema'); // Import staff model
-
-// Login route for customers
-router.post('/customer', async (req, res) => {
-    const { lrn, password } = req.body;
-    console.log('Logging in:', { lrn, password }); // Debug logging
+    const lrn = document.getElementById('customerLRN').value;
+    const password = document.getElementById('customerPassword').value;
 
     try {
-        const customer = await Customer.findOne({ lrn });
-        console.log('Found customer:', customer); // Log the found customer document
+        const response = await fetch('https://mshssm-canteen.onrender.com/api/login/customer', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ lrn, password })
+        });
 
-        if (!customer) {
-            return res.status(401).json({ error: 'Invalid credentials' });
-        }
+        const result = await response.json();
+        const messageDiv = document.getElementById('customerMessage');
 
-        const passwordMatch = await bcrypt.compare(password, customer.password);
-        console.log('Password match:', passwordMatch); // Log password comparison result
+        if (response.ok) {
+            // Handle successful login (store token, redirect, etc.)
+            console.log('Customer Login successful:', result);
+            messageDiv.textContent = 'Login successful!';
+            
+            // Store token and user info
+            localStorage.setItem('token', result.token);
+            localStorage.setItem('firstName', result.firstName);
+            localStorage.setItem('lastName', result.lastName);
 
-        if (passwordMatch) {
-            const token = jwt.sign({ lrn: customer.lrn }, process.env.JWT_SECRET, { expiresIn: '1h' });
-            res.json({ token, firstName: customer.firstName, lastName: customer.lastName });
+            // Redirect to order page
+            window.location.href = 'order.html';
         } else {
-            return res.status(401).json({ error: 'Invalid credentials' });
+            messageDiv.textContent = 'Error: ' + result.error;
         }
     } catch (error) {
-        console.error('Error logging in:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        console.error('Error:', error);
     }
 });
 
-// Login route for staff
-router.post('/staff', async (req, res) => {
-    const { mobileNumber, password } = req.body;
+// Staff Login
+document.getElementById('staffLoginForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const mobileNumber = document.getElementById('staffMobileNumber').value;
+    const password = document.getElementById('staffPassword').value;
 
     try {
-        const staff = await Staff.findOne({ mobileNumber });
-        if (!staff) {
-            return res.status(401).json({ error: 'Invalid credentials' });
-        }
+        const response = await fetch('https://mshssm-canteen.onrender.com/api/login/staff', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ mobileNumber, password })
+        });
 
-        if (await bcrypt.compare(password, staff.password)) {
-            const token = jwt.sign({ mobileNumber: staff.mobileNumber }, process.env.JWT_SECRET, { expiresIn: '1h' });
-            res.json({ token, firstName: staff.firstName, lastName: staff.lastName });
+        const result = await response.json();
+        const messageDiv = document.getElementById('staffMessage');
+
+        if (response.ok) {
+            // Handle successful login (store token, redirect, etc.)
+            console.log('Staff Login successful:', result);
+            messageDiv.textContent = 'Login successful!';
+            
+            // Store token and user info
+            localStorage.setItem('token', result.token);
+            localStorage.setItem('firstName', result.firstName);
+            localStorage.setItem('lastName', result.lastName);
+
+            // Redirect to staff page
+            window.location.href = 'staff.html';
         } else {
-            res.status(401).json({ error: 'Invalid credentials' });
+            messageDiv.textContent = 'Error: ' + result.error;
         }
     } catch (error) {
-        console.error('Error logging in:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        console.error('Error:', error);
     }
 });
-
-module.exports = router;
