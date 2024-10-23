@@ -1,54 +1,59 @@
-document.getElementById('loginForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
+const express = require('express');
+const router = express.Router();
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-    // Show loading indicator
-    document.getElementById('loading').style.display = 'block';
-    document.getElementById('message').textContent = '';
+const Customer = require('./customerSchema'); // Updated model name
+const Staff = require('./staffSchema'); // Import staff model
 
-    const userType = document.querySelector('input[name="userType"]:checked').value; // Get user type
-    const lrn = document.getElementById('lrn').value;
-    const password = document.getElementById('password').value;
-
-    // Log the login attempt details
-    console.log('Logging in:', { userType, lrn, password });
+// Login route for customers
+router.post('/customer', async (req, res) => {
+    const { lrn, password } = req.body;
+    console.log('Logging in:', { lrn, password }); // Debug logging
 
     try {
-        const response = await fetch(`https://mshssm-canteen.onrender.com/api/login/${userType}`, { // Use user type in URL
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userType === 'customers' ? { lrn, password } : { mobileNumber: lrn, password }) // Adjust body based on user type
-        });
+        const customer = await Customer.findOne({ lrn });
+        console.log('Found customer:', customer); // Log the found customer document
 
-        let result;
-        try {
-            result = await response.json(); // Parse JSON response
-        } catch (error) {
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('message').textContent = 'Error parsing response: ' + error.message; // Display parsing error
-            return;
+        if (!customer) {
+            return res.status(401).json({ error: 'Invalid credentials' });
         }
 
-        document.getElementById('loading').style.display = 'none'; // Hide loading indicator
+        const passwordMatch = await bcrypt.compare(password, customer.password);
+        console.log('Password match:', passwordMatch); // Log password comparison result
 
-        // Log the response
-        console.log('Fetch result:', result);
-
-        if (response.ok) {
-            console.log('Login successful:', result);
-            document.getElementById('message').textContent = 'Login successful!';
-
-            // Store the token and user information
-            localStorage.setItem('token', result.token);
-            localStorage.setItem('firstName', result.firstName); // Store first name
-            localStorage.setItem('lastName', result.lastName);   // Store last name
-
-            // Redirect to order page
-            window.location.href = 'order.html';
+        if (passwordMatch) {
+            const token = jwt.sign({ lrn: customer.lrn }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            res.json({ token, firstName: customer.firstName, lastName: customer.lastName });
         } else {
-            document.getElementById('message').textContent = 'Error: ' + result.error; // Display server error
+            return res.status(401).json({ error: 'Invalid credentials' });
         }
     } catch (error) {
-        document.getElementById('loading').style.display = 'none'; // Hide loading indicator
-        document.getElementById('message').textContent = 'Error: ' + error.message; // Display error message
+        console.error('Error logging in:', error);
+        res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+// Login route for staff
+router.post('/staff', async (req, res) => {
+    const { mobileNumber, password } = req.body;
+
+    try {
+        const staff = await Staff.findOne({ mobileNumber });
+        if (!staff) {
+            return res.status(401).json({ error: 'Invalid credentials' });
+        }
+
+        if (await bcrypt.compare(password, staff.password)) {
+            const token = jwt.sign({ mobileNumber: staff.mobileNumber }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            res.json({ token, firstName: staff.firstName, lastName: staff.lastName });
+        } else {
+            res.status(401).json({ error: 'Invalid credentials' });
+        }
+    } catch (error) {
+        console.error('Error logging in:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+module.exports = router;
