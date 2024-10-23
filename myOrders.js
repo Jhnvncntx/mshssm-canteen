@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to fetch customer's orders
     const fetchOrders = async () => {
         try {
-            const response = await fetch('https://mshssm-canteen.onrender.com/orders/my-orders', {
+            const response = await fetch('https://mshssm-canteen.onrender.com/api/orders/my-orders', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}` // Include the JWT token
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const orderId = e.target.getAttribute('data-id');
 
         try {
-            const response = await fetch(`https://mshssm-canteen.onrender.com/orders/cancel/${orderId}`, {
+            const response = await fetch(`https://mshssm-canteen.onrender.com/api/orders/cancel/${orderId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}` // Include the JWT token
