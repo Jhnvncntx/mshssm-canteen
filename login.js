@@ -2,8 +2,18 @@
 document.getElementById('customerLoginForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const lrn = document.getElementById('customerLRN').value;
-    const password = document.getElementById('customerPassword').value;
+    const lrn = document.getElementById('customerLRN').value.trim();
+    const password = document.getElementById('customerPassword').value.trim();
+    const messageDiv = document.getElementById('customerMessage');
+
+    // Clear previous messages
+    messageDiv.textContent = '';
+
+    // Simple validation
+    if (!lrn || !password) {
+        messageDiv.textContent = 'Please fill in all fields.';
+        return;
+    }
 
     try {
         const response = await fetch('https://mshssm-canteen.onrender.com/api/login/customer', {
@@ -13,10 +23,8 @@ document.getElementById('customerLoginForm').addEventListener('submit', async fu
         });
 
         const result = await response.json();
-        const messageDiv = document.getElementById('customerMessage');
 
         if (response.ok) {
-            // Handle successful login (store token, redirect, etc.)
             console.log('Customer Login successful:', result);
             messageDiv.textContent = 'Login successful!';
             
@@ -32,6 +40,7 @@ document.getElementById('customerLoginForm').addEventListener('submit', async fu
         }
     } catch (error) {
         console.error('Error:', error);
+        messageDiv.textContent = 'An error occurred. Please try again later.';
     }
 });
 
@@ -39,8 +48,18 @@ document.getElementById('customerLoginForm').addEventListener('submit', async fu
 document.getElementById('staffLoginForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const mobileNumber = document.getElementById('staffMobileNumber').value;
-    const password = document.getElementById('staffPassword').value;
+    const mobileNumber = document.getElementById('staffMobileNumber').value.trim();
+    const password = document.getElementById('staffPassword').value.trim();
+    const messageDiv = document.getElementById('staffMessage');
+
+    // Clear previous messages
+    messageDiv.textContent = '';
+
+    // Simple validation
+    if (!mobileNumber || !password) {
+        messageDiv.textContent = 'Please fill in all fields.';
+        return;
+    }
 
     try {
         const response = await fetch('https://mshssm-canteen.onrender.com/api/login/staff', {
@@ -50,10 +69,8 @@ document.getElementById('staffLoginForm').addEventListener('submit', async funct
         });
 
         const result = await response.json();
-        const messageDiv = document.getElementById('staffMessage');
 
         if (response.ok) {
-            // Handle successful login (store token, redirect, etc.)
             console.log('Staff Login successful:', result);
             messageDiv.textContent = 'Login successful!';
             
@@ -69,5 +86,6 @@ document.getElementById('staffLoginForm').addEventListener('submit', async funct
         }
     } catch (error) {
         console.error('Error:', error);
+        messageDiv.textContent = 'An error occurred. Please try again later.';
     }
 });
