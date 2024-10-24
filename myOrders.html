@@ -24,16 +24,36 @@
     </header>
     
     <main>
-        <div class="container">
-            <div class="header">
-                My Orders             
-            </div>
+        <h2>My Orders</h2>
 
-            <div class="body">
-                <div id="orders-list">
-                  <!-- Orders Will Go Here -->
-                </div>              
-            </div>
+        <div id="pending-orders" class="container">
+          <div class="header">
+            Pending Orders            
+          </div>
+
+          <div class="body">
+             <div class="order-list" id="pending-list"></div>           
+          </div>
+        </div>
+
+        <div id="ready-orders" class="container">
+          <div class="header">
+            Ready Orders       
+          </div>
+
+          <div class="body">
+            <div class="order-list" id="ready-list"></div>            
+          </div>
+        </div>
+
+        <div id="claimed-orders" class="container">
+          <div class="header">
+            Claimed Orders</h3> 
+          </div>
+
+          <div class="body">
+            <div class="order-list" id="claimed-list"></div>            
+          </div>
         </div>
     </main>
     
