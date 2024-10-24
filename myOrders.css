@@ -1,10 +1,15 @@
 body {
+    height: auto;
     font-family: Arial, sans-serif;
 }
 
 .container {
     height: 650px;
     padding: 0;
+}
+
+#claimed-orders {
+    margin-bottom: 50px;
 }
 
 .header {
