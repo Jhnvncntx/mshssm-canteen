@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             orderDiv.innerHTML = `
                 <h3>Order ID: ${order.orderId}</h3>
                 <p>Customer Name: ${order.customerName}</p>
-                <p>Total Amount: $${order.totalAmount}</p>
+                <p>Total Amount: ₱${order.totalAmount}</p>
                 <p>Status: ${order.status}</p>
                 <button class="cancel-btn" data-id="${order._id}">Cancel Order</button>
             `;
@@ -63,15 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            const data = await response.json(); // Read the response body as JSON
+
             if (!response.ok) {
-                throw new Error('Failed to cancel order');
+                throw new Error(data.message || 'Failed to cancel order'); // Use the custom message if available
             }
 
             alert('Order canceled successfully');
             fetchOrders(); // Refresh the orders list
         } catch (error) {
             console.error('Error canceling order:', error);
-            alert('Failed to cancel order. Please try again later.');
+            alert(error.message); // Display the specific error message from the response
         }
     };
 
