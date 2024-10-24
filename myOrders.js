@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 orderElement.innerHTML = `
                     <div class='orders-header'>
                         <div class='orderId'><h3>Order ID: ${order.orderId}</h3></div>
-                        <div class= 'totalAmount'><p>Total Amount: $${order.totalAmount.toFixed(2)}</p></div>
+                        <div class= 'totalAmount'><p>Total Amount: ₱${order.totalAmount.toFixed(2)}</p></div>
                         <div class='orderStatus'><p>Status: ${order.status}</p></div>
                         <div class='itemList'></div>
                         ${cancelButton}
