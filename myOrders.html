@@ -24,11 +24,10 @@
     </header>
     
     <main>
-        <h2>My Orders</h2>
-
+      <h1 id="pending"></h1>
         <div id="pending-orders" class="container">
           <div class="header">
-            Pending Orders            
+            Pending Orders
           </div>
 
           <div class="body">
@@ -36,6 +35,7 @@
           </div>
         </div>
 
+        <h1 id="ready"></h1>
         <div id="ready-orders" class="container">
           <div class="header">
             Ready Orders       
@@ -46,6 +46,7 @@
           </div>
         </div>
 
+        <h1 id="claimed"></h1>
         <div id="claimed-orders" class="container">
           <div class="header">
             Claimed Orders</h3> 
@@ -64,6 +65,18 @@
 
       <div>
         <a href="index.html">Logout</a>
+      </div>
+
+      <div>
+        <a href="#pending">Pending</a>
+      </div>
+
+      <div>
+        <a href="#ready">Ready</a>
+      </div>
+
+      <div>
+        <a href="#claimed">Claimed</a>
       </div>
   </footer> 
     <script src="myOrders.js"></script>
