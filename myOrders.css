@@ -2,15 +2,52 @@ body {
     font-family: Arial, sans-serif;
 }
 
-#orders-container {
-    width: 80%;
-    margin: 0 auto;
+.container {
+    height: 500px;
+    padding: 0;
+}
+
+.header {
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px 4px 0 0;
+    height: 100px;
+    margin: 0;
+    width: 100%;
+    background-color: rgba(127, 7, 8, 1);
+    padding: 0;
+    color: white;
+}
+
+.body {
+    margin: 0;
+    padding: 0;
+    background-color: rgba( 255, 255, 255, 0.5);
+    height: 570px;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-bottom: rgba(127, 7, 8, 1) solid 10px;
+    border-radius: 0 0 4px 4px;
 }
 
 .order {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin: 10px 0;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 1);
+    color: white;
+    border-radius: 5px;
+    width: 98%;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 5px;
 }
 
 .cancel-btn {
@@ -19,8 +56,23 @@ body {
     border: none;
     padding: 10px;
     cursor: pointer;
+    width: 200px;
 }
 
 .cancel-btn:hover {
     background-color: darkred;
+}
+
+.body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.body::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #7773;
+}
+
+.body::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #888;
 }
