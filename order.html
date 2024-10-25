@@ -7,7 +7,34 @@
     <link rel="stylesheet" href="basic.css">
     <link rel="stylesheet" href="order.css">
     <link rel="icon" href="school-logo-removebg-preview.png" type="image/png">
-</head>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js';
+        import { getMessaging, getToken } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-messaging.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyABLZMrwUItOZlIxWhU2iWB1exHGP-6Tts",
+            authDomain: "canteen-notification-system.firebaseapp.com",
+            projectId: "canteen-notification-system",
+            storageBucket: "canteen-notification-system.appspot.com",
+            messagingSenderId: "339382331892",
+            appId: "1:339382331892:web:16d5cb933325bf848db1a1",
+            measurementId: "G-DH9N1ZHLT6"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const messaging = getMessaging(app);
+
+        // Register the service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('firebase-messaging-sw.js')
+                .then((registration) => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch((err) => {
+                    console.error('Service Worker registration failed:', err);
+                });
+        }
+    </script>
 <body>
     <header>
         <div class="iname">
@@ -24,47 +51,47 @@
     </header>
 
     <main>
-    <h1 class="nav" id="products"></h1>
-            <!-- Products Section -->
-            <div id="products-container" class="productsContainer">
-                <div class="header">
-                    Available Products
-                </div>
+        <h1 class="nav" id="products"></h1>
+        <!-- Products Section -->
+        <div id="products-container" class="productsContainer">
+            <div class="header">
+                Available Products
+            </div>
 
-                <div class="body">
-                    <div id="products-list">
-                        <!-- Products will be dynamically inserted here -->
-                    </div>
+            <div class="body">
+                <div id="products-list">
+                    <!-- Products will be dynamically inserted here -->
                 </div>
             </div>
-    <h1 class="nav" id="cart"></h1>    
-            <!-- Cart Section -->
-            <div id="cart-container" class="cartContainer">
-                <div class="header">
-                    Your Cart
-                </div>
-
-                <div class="body">
-                    <table id="cart-items">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>#</th>
-                                <th>Remove</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Cart items will be dynamically inserted here -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="footer">
-                    <div class="total-amount"><p>Total Amount: <span id="total-amount">₱0.00</span></p></div>
-                    <div class="place-order"><button id="place-order">Place Order</button></div>
-                </div>
+        </div>
+        <h1 class="nav" id="cart"></h1>    
+        <!-- Cart Section -->
+        <div id="cart-container" class="cartContainer">
+            <div class="header">
+                Your Cart
             </div>
+
+            <div class="body">
+                <table id="cart-items">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>#</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Cart items will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="footer">
+                <div class="total-amount"><p>Total Amount: <span id="total-amount">₱0.00</span></p></div>
+                <div class="place-order"><button id="place-order">Place Order</button></div>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -85,6 +112,6 @@
         </div>
     </footer> 
 
-    <script src="order.js"></script> <!-- Link your JavaScript file -->
+    <script type="module" src="order.js"></script> <!-- Link your JavaScript file -->
 </body>
 </html>
