@@ -1,5 +1,5 @@
 body {
-    height: 180vh;
+    height: 275vh;
 }
 
 .order-container {
@@ -16,59 +16,38 @@ body {
     border: 1px solid black;
     border-radius: 5px;
     padding: 0;
-    max-height: 50vh;
+    height: 650px;
 }
 
 #claimedContainer {
     margin-bottom: 100px;
 }
 
-.orders {
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba( 255, 255, 255, 0.5);
-    border: 0.5px black solid;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    width: 80%;
-}
-
-.orderId, .customerName, .totalAmount {
-    font-weight: bold
-}
-
-.item {
-    list-style: none;
-    margin-bottom: 10px;
-}
-
 .header {
-    height: 10vh;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px 4px 0 0;
+    height: 100px;
     margin: 0;
     width: 100%;
-    background-color: #7f0708;
+    background-color: rgba(127, 7, 8, 1);
     padding: 0;
     color: white;
 }
 
-.heading {
-    font-size: 40px;
-    text-align: center;
-    align-self: center;
-}
-
 .body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    width: 96%;
+    margin: 0;
+    padding: 0;
     background-color: rgba( 255, 255, 255, 0.5);
-    overflow-x: hidden;
+    height: 570px;
+    width: 100%;
     overflow-y: scroll;
-    border-radius: 5px;
+    overflow-x: hidden;
+    border-bottom: rgba(127, 7, 8, 1) solid 10px;
+    border-radius: 0 0 4px 4px;
 }
 
 .body::-webkit-scrollbar {
@@ -85,6 +64,80 @@ body {
     background-color: #888;
 }
 
+.orders {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 1);
+    color: white;
+    border-radius: 5px;
+    width: 98%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-left: 5px;
+    overflow: hidden;
+}
+
+.orders-header {
+    padding-top: 10px;
+    padding-left: 50px;
+    margin-bottom: 5px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.orders-header div {
+    margin:0;
+    padding: 0;
+    height: 30px;
+}
+
+.itemDiv {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 1);
+    color: white;
+    border-radius: 5px;
+    width: 96%;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.itemDiv div {
+    margin-left: 20px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 20px;
+}
+
+.button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 400px;
+    height: 50px;
+    font-size: 30px;
+}
+
+.button:hover {
+    background-color: darkred;
+}
+
+.nav {
+    margin-bottom: 100px;
+}
 
 @media (max-width: 600px) {
     .order-container {
@@ -92,9 +145,6 @@ body {
         margin-bottom: 10px;
         width: 98%;
         padding: 0;
-    }
-    .orders {
-        width: 300px;
     }
 
     .body::-webkit-scrollbar {
