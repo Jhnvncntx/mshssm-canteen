@@ -1,3 +1,21 @@
+// Initialize OneSignal
+window.OneSignal = window.OneSignal || [];
+OneSignal.push(["init", {
+    appId: "0bcb5020-79f2-470f-b432-04c6d101b4b0", // Replace with your App ID
+    notifyButton: {
+        enable: true, // Enable or disable the notification button
+    },
+    welcomeNotification: {
+        title: "Welcome!",
+        message: "Thanks for subscribing!",
+    }
+}]);
+
+// Request permission to send notifications
+OneSignal.push(() => {
+    OneSignal.showNativePrompt();
+});
+
 // Function to check if token is expired
 function isTokenExpired(token) {
     if (!token) return true; // If no token, consider it expired
