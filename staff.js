@@ -136,5 +136,15 @@ async function updateOrderStatus(orderId, status) {
     }
 }
 
+function welcomeUser() {
+    const firstName = localStorage.getItem('firstName');
+    const lastName = localStorage.getItem('lastName');
+    const welcomeMessage = document.getElementById('welcomeMessage') 
+    const fullName = firstName + ' ' + lastName
+
+    welcomeMessage.textContent = `Hi ${fullName}!`
+}
+
 // Call loadOrders when the page loads
 document.addEventListener('DOMContentLoaded', loadOrders);
+document.addEventListener('DOMContentLoaded', welcomeUser);
