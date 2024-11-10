@@ -97,3 +97,14 @@ body {
     margin-left: 10%;
     margin-top: 20px;
 }
+
+@media (max-width: 600px) {
+
+    #products-container {
+        width: 90%;
+    }
+
+    #products-container h1 {
+        font-size: 25px;
+    }
+}
