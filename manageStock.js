@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchProducts();
 
     // Handle stock update on the form
-    document.getElementById('update-stock-form').addEventListener('submit', updateStock);
+    document.getElementById('update-stock-form').addEventListener('submit', updateStockInDb);
 });
 
 // Fetch all products from the server
