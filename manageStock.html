@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASIC</title>
+    <link rel="icon" href="school-logo-removebg-preview.png" type="image/png">
+    <link rel="stylesheet" href="basic.css">
+</head>
+<body>
+    <header>
+      <div class="iname">
+        DIGITAL
+      </div>
+  
+      <div class="logo">
+        <a href="website.html"><img src="school-logo.png"></a>
+      </div>
+  
+      <div class="iname">
+        CANTEEN
+      </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <h1>Manage Stock</h1>
+            <div id="products-list"></div>
+        
+           
+        </div>
+
+        <div class="container">
+            <div class="add-product-form">
+                <h3>Add New Product</h3>
+                <label for="product-name">Product Name:</label>
+                <input type="text" id="product-name" placeholder="Enter product name">
+                <label for="product-price">Price:</label>
+                <input type="number" id="product-price" placeholder="Enter product price">
+                <label for="product-stock">Stock Quantity:</label>
+                <input type="number" id="product-stock" placeholder="Enter stock quantity">
+                <button onclick="addProduct()">Add Product</button>
+            </div>             
+        </div>
+
+    </main>
+    
+    <footer>
+      <div>
+        <a href="register.html">Register</a>
+      </div>
+  
+      <div>
+        Cart
+      </div>
+  </footer> 
+    <script src="manageStock.js"></script>
+</body>
+</html>
