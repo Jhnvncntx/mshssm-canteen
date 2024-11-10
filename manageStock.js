@@ -28,10 +28,14 @@ function displayProducts(products) {
         const productDiv = document.createElement('div');
         productDiv.className = 'product';
         productDiv.innerHTML = `
-            <div class='pname'>${product.name}</div> <div class='pprice'>₱${product.price}</div> <div class="product-stock">Stock: ${product.stock}</div>
+        <div class='infos'>
+            <div class='pname'>${product.name}</div> <div class='pprice'>₱${product.price}</div> <div class="pstock">Stock: ${product.stock}</div>
+        </div>
 
+        <div class='buttons'>
             <div class='pbutton'><button onclick="editStock('${product._id}')">Edit Stock</button></div>
             <div class='pbutton'><button onclick="deleteProduct('${product._id}')">Delete Product</button></div>
+        </div>
         `;
         productsList.appendChild(productDiv);
     });
