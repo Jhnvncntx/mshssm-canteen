@@ -5,7 +5,7 @@
 
 //   const options = {
 //     body: data.body,
-//     icon: 'bg-image.jpg',  // Replace with your icon URL
+//     icon: 'school-logo.png',  // Replace with your icon URL
 //   };
 
 //   // Show the notification
