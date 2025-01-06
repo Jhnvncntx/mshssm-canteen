@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page</title>
+    <link rel="stylesheet" href="basic.css">
+    <link rel="stylesheet" href="order.css">
+    <link rel="icon" href="school-logo-removebg-preview.png" type="image/png">
+    <script src="app.js"></script>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <header>
+        <div class="iname">
+          DIGITAL
+        </div>
+    
+        <div class="logo">
+          <a href="website.html"><img src="school-logo.png"></a>
+        </div>
+    
+        <div class="iname">
+          CANTEEN
+        </div>
+    </header>
+
+    <main>
+    <h1 class="nav" id="products"></h1>
+            <!-- Products Section -->
+            <div id="products-container" class="productsContainer">
+                <div class="header">
+                    Available Products
+                </div>
+
+                <div class="body">
+                    <div id="products-list">
+                        <!-- Products will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+    <h1 class="nav" id="cart"></h1>    
+            <!-- Cart Section -->
+            <div id="cart-container" class="cartContainer">
+                <div class="header">
+                    Your Cart
+                </div>
+
+                <div class="body">
+                    <table id="cart-items">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>#</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Cart items will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="footer">
+                    <div class="total-amount"><p>Total Amount: <span id="total-amount">₱0.00</span></p></div>
+                    <div class="place-order"><button id="place-order">Place Order</button></div>
+                </div>
+            </div>
+    </main>
+
+    <footer>
+        <div>
+            <a href="#products">Products</a>
+        </div>
+
+        <div>
+            <a href="#cart">Cart</a>
+        </div>
+
+        <div>
+            <a href="myOrders.html">Orders</a>
+        </div>        
+
+        <div>
+            <a href="index.html">Logout</a>
+        </div>
+    </footer> 
+
+    <script src="order.js"></script> <!-- Link your JavaScript file -->
+</body>
+</html>
